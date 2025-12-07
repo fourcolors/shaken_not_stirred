@@ -1,0 +1,15 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { clsx } from 'clsx';
+import { Typography } from '../../atoms/Typography';
+import { Button } from '../../atoms/Button';
+import { PlayerCard } from '../../molecules/PlayerCard';
+import styles from './Lobby.module.css';
+/**
+ * Host/TV Lobby screen showing players joining the game.
+ * Displays different states: empty, populating, and ready.
+ */
+export function Lobby({ state, roomCode, players, maxPlayers = 8, isVIP = false, onStartGame, onSettings, className, }) {
+    return (_jsxs("div", { className: clsx(styles.lobby, styles[state], className), children: [_jsxs("header", { className: styles.header, children: [_jsx(Typography, { variant: "h2", glow: true, children: "THE VIVA LOUNGE" }), _jsxs("div", { className: styles.roomInfo, children: [_jsx(Typography, { variant: "label", color: "muted", children: "Room Code" }), _jsx("div", { className: styles.roomCode, children: roomCode.split('').map((char, i) => (_jsx("span", { className: styles.roomCodeChar, children: char }, i))) })] })] }), _jsxs("main", { className: styles.main, children: [state === 'empty' && (_jsxs("div", { className: styles.emptyState, children: [_jsx(Typography, { variant: "h3", color: "muted", className: styles.pulsingText, children: "Waiting for players..." }), _jsx(Typography, { variant: "body", color: "muted", children: "Scan the QR code or enter the room code on your phone" })] })), (state === 'populating' || state === 'ready') && (_jsxs("div", { className: styles.playerGrid, children: [players.map((player, index) => (_jsx("div", { className: styles.playerSlot, style: { animationDelay: `${index * 0.1}s` }, children: _jsx(PlayerCard, { name: player.name, shape: player.avatarShape, color: player.avatarColor, isVIP: player.isVIP, isDJ: player.isDJ, isDrinking: player.isDrinking }) }, player.id))), Array.from({ length: maxPlayers - players.length }).map((_, i) => (_jsx("div", { className: styles.emptySlot, children: _jsx("div", { className: styles.emptySlotInner, children: _jsx(Typography, { variant: "caption", color: "muted", children: "?" }) }) }, `empty-${i}`)))] }))] }), _jsxs("footer", { className: styles.footer, children: [_jsxs("div", { className: styles.playerCount, children: [_jsx(Typography, { variant: "h4", color: "accent", glow: true, children: players.length }), _jsxs(Typography, { variant: "body", color: "muted", children: ["/ ", maxPlayers, " players"] })] }), state === 'ready' && isVIP && (_jsxs("div", { className: styles.actions, children: [_jsx(Button, { variant: "ghost", size: "lg", onClick: onSettings, children: "Settings" }), _jsx(Button, { variant: "primary", size: "lg", glow: true, onClick: onStartGame, children: "Start Game" })] })), state === 'ready' && !isVIP && (_jsx(Typography, { variant: "body", color: "secondary", glow: true, className: styles.waitingVIP, children: "Waiting for VIP to start..." }))] })] }));
+}
+export default Lobby;
+//# sourceMappingURL=Lobby.js.map

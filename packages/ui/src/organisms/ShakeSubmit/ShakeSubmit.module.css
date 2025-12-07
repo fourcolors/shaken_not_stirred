@@ -1,0 +1,192 @@
+.shakeSubmit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: var(--space-6);
+  background: var(--color-bg-primary);
+  gap: var(--space-8);
+}
+
+/* Shaking state */
+.shaking {
+  animation: screen-shake 0.1s ease-in-out infinite;
+}
+
+@keyframes screen-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
+
+/* Glass Container */
+.glassContainer {
+  position: relative;
+  width: 150px;
+  height: 180px;
+}
+
+.glass {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0 0 30px 30px;
+  overflow: hidden;
+}
+
+.liquid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    180deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
+  transition: height 0.1s ease-out;
+}
+
+.shaking .liquid {
+  animation: liquid-wave 0.2s ease-in-out infinite;
+}
+
+@keyframes liquid-wave {
+  0%, 100% { transform: skewX(0deg); }
+  25% { transform: skewX(-3deg); }
+  75% { transform: skewX(3deg); }
+}
+
+.bubbles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.bubble {
+  position: absolute;
+  bottom: 0;
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-full);
+  opacity: 0;
+}
+
+.shaking .bubble {
+  animation: bubble-rise 1s ease-out infinite;
+}
+
+@keyframes bubble-rise {
+  0% {
+    bottom: 10%;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    bottom: 90%;
+    opacity: 0;
+  }
+}
+
+.glassEmoji {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 80px;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+/* Instruction */
+.instruction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  text-align: center;
+}
+
+.shakeText {
+  animation: shake-text 0.5s ease-in-out infinite;
+}
+
+@keyframes shake-text {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+/* Progress */
+.progressSection {
+  width: 100%;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.progressBar {
+  height: 12px;
+  background: var(--color-surface);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  border-radius: var(--radius-full);
+  transition: width 0.1s ease-out;
+}
+
+.shakeCount {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+/* Complete State */
+.complete {
+  background: rgba(157, 0, 255, 0.1);
+}
+
+.completeContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  animation: complete-pop 0.5s var(--ease-bounce);
+}
+
+@keyframes complete-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.cocktailIcon {
+  font-size: 80px;
+  animation: cocktail-wiggle 0.5s ease-in-out;
+}
+
+@keyframes cocktail-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-15deg); }
+  75% { transform: rotate(15deg); }
+}

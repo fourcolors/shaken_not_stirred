@@ -1,0 +1,16 @@
+
+> @shaken/ui@0.0.1 build /Users/fourcolors/Projects/1_active/shaken_not_stired/packages/ui
+> tsup src/index.ts --format esm --dts --clean
+
+CLI Building entry: src/index.ts
+CLI Using tsconfig: tsconfig.json
+CLI tsup v8.5.1
+CLI Target: es2022
+CLI Cleaning output folder
+ESM Build start
+ESM dist/index.css 68.25 KB
+ESM dist/index.js  89.86 KB
+ESM ⚡️ Build success in 53ms
+DTS Build start
+DTS ⚡️ Build success in 6712ms
+DTS dist/index.d.ts 26.26 KB

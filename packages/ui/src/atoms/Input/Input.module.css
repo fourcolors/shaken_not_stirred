@@ -1,0 +1,100 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.label {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+}
+
+.input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text-primary);
+  background: var(--color-surface);
+  border: var(--border-medium) solid var(--color-surface-hover);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.input:hover:not(:disabled) {
+  border-color: var(--color-primary-dim);
+}
+
+.input:focus {
+  border-color: var(--color-primary);
+}
+
+.input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Sizes */
+.sm {
+  height: 36px;
+  padding: 0 var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.md {
+  height: 48px;
+  padding: 0 var(--space-4);
+  font-size: var(--text-base);
+}
+
+.lg {
+  height: 60px;
+  padding: 0 var(--space-5);
+  font-size: var(--text-lg);
+}
+
+/* States */
+.error {
+  border-color: var(--color-error);
+}
+
+.error:focus {
+  border-color: var(--color-error);
+  box-shadow: 0 0 10px var(--color-error-glow);
+}
+
+.panic {
+  border-color: var(--color-error);
+  animation: panic-pulse 0.5s ease-in-out infinite;
+}
+
+.glow:focus {
+  box-shadow: 0 0 10px var(--color-primary-glow),
+              0 0 20px var(--color-primary-glow);
+}
+
+.errorMessage {
+  font-size: var(--text-sm);
+  color: var(--color-error);
+}
+
+@keyframes panic-pulse {
+  0%, 100% {
+    border-color: var(--color-error);
+    box-shadow: 0 0 5px var(--color-error-glow);
+  }
+  50% {
+    border-color: #ff6666;
+    box-shadow: 0 0 20px var(--color-error-glow),
+                0 0 30px var(--color-error-glow);
+  }
+}

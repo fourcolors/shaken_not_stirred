@@ -1,0 +1,124 @@
+.votingPad {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--color-bg-primary);
+}
+
+/* Timer */
+.timerSection {
+  padding: var(--space-4);
+}
+
+/* Prompt */
+.promptSection {
+  padding: 0 var(--space-4) var(--space-2);
+  text-align: center;
+}
+
+/* Instruction */
+.instruction {
+  text-align: center;
+  padding: var(--space-2);
+}
+
+/* Options */
+.options {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.option {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  text-align: center;
+  position: relative;
+}
+
+.optionA {
+  background: rgba(204, 255, 0, 0.1);
+  border-bottom: 1px solid var(--color-surface);
+}
+
+.optionA:hover,
+.optionA:active {
+  background: rgba(204, 255, 0, 0.2);
+}
+
+.optionB {
+  background: rgba(255, 16, 240, 0.1);
+}
+
+.optionB:hover,
+.optionB:active {
+  background: rgba(255, 16, 240, 0.2);
+}
+
+.answerText {
+  font-style: italic;
+  line-height: 1.4;
+  max-width: 280px;
+}
+
+.tapHint {
+  position: absolute;
+  bottom: var(--space-4);
+  padding: var(--space-1) var(--space-3);
+  background: var(--color-surface);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  animation: pulse-hint 2s ease-in-out infinite;
+}
+
+@keyframes pulse-hint {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2);
+  background: var(--color-surface);
+}
+
+/* Voted State */
+.voted {
+  justify-content: center;
+  align-items: center;
+}
+
+.votedContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+  animation: vote-confirm 0.5s var(--ease-bounce);
+}
+
+@keyframes vote-confirm {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

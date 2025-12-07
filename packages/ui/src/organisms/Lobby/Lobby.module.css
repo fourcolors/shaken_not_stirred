@@ -1,0 +1,153 @@
+.lobby {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: var(--space-8);
+  background: var(--color-bg-primary);
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-surface);
+}
+
+.roomInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-2);
+}
+
+.roomCode {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.roomCodeChar {
+  width: 48px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface);
+  border: var(--border-medium) solid var(--color-primary);
+  border-radius: var(--radius-md);
+  font-family: var(--font-kinetic);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--color-primary);
+  text-shadow: var(--text-glow-primary);
+}
+
+/* Main Content */
+.main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) 0;
+}
+
+/* Empty State */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.pulsingText {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Player Grid */
+.playerGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+  max-width: 1200px;
+  width: 100%;
+}
+
+.playerSlot {
+  animation: bounceIn 0.5s var(--ease-bounce) both;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(50px);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.emptySlot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emptySlotInner {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface);
+  border: 2px dashed var(--color-surface-hover);
+  border-radius: var(--radius-lg);
+  opacity: 0.5;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-surface);
+}
+
+.playerCount {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.waitingVIP {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* State Modifiers */
+.empty .main {
+  opacity: 0.7;
+}
+
+.ready .header {
+  border-bottom-color: var(--color-primary);
+}
+
+.ready .footer {
+  border-top-color: var(--color-primary);
+}

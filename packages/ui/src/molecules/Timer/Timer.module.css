@@ -1,0 +1,103 @@
+/* Circular Timer */
+.circular {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bgCircle {
+  fill: none;
+  stroke: var(--color-surface);
+}
+
+.progressCircle {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease-out, stroke 0.3s ease;
+  filter: drop-shadow(0 0 10px var(--color-primary-glow));
+}
+
+.panicCircle {
+  stroke: var(--color-error);
+  filter: drop-shadow(0 0 10px var(--color-error-glow));
+}
+
+.timeDisplay {
+  position: relative;
+  z-index: 1;
+}
+
+.panic .timeDisplay {
+  animation: shake 0.5s ease-in-out infinite;
+}
+
+/* Bar Timer */
+.barContainer {
+  position: relative;
+  width: 100%;
+  background: var(--color-surface);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.sm.barContainer {
+  height: 24px;
+}
+
+.md.barContainer {
+  height: 40px;
+}
+
+.lg.barContainer {
+  height: 56px;
+}
+
+.barProgress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary-dim), var(--color-primary));
+  border-radius: var(--radius-full);
+  transition: width 0.5s ease-out, background 0.3s ease;
+  box-shadow: 0 0 20px var(--color-primary-glow);
+}
+
+.barProgress.panic {
+  background: linear-gradient(90deg, #cc2952, var(--color-error));
+  box-shadow: 0 0 20px var(--color-error-glow);
+  animation: bar-panic 0.5s ease-in-out infinite;
+}
+
+.barTime {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+@keyframes bar-panic {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}

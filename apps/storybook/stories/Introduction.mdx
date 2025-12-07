@@ -1,0 +1,99 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduction" />
+
+# 🍸 Shaken Not Stirred
+
+Welcome to the **Acid Lounge Design System** - a component library for the Shaken Not Stirred party game platform.
+
+## Tech Stack
+
+- **React 18** - UI framework
+- **Storybook 8** - Component documentation and development
+- **Pixi.js 8** - WebGL graphics and effects
+- **Vite 6** - Build tool
+- **Turborepo** - Monorepo management
+
+## Design Philosophy
+
+This design system follows **Storybook Driven Development (SDD)** - all visual components are built and approved in Storybook before being integrated into the application logic.
+
+### Atomic Design
+
+Components are organized using Brad Frost's Atomic Design methodology:
+
+- **Atoms** - Basic building blocks (Button, Input, Typography, Avatar)
+- **Molecules** - Simple combinations (PlayerCard, Timer, FormField)
+- **Organisms** - Complex sections (SplashScreen, Lobby, GameBoard)
+- **Templates** - Page layouts
+
+## Visual Identity: Acid Lounge
+
+The "Acid Lounge" aesthetic combines:
+
+- **Neon colors**: Acid Green (#CCFF00), Hot Pink (#FF10F0), Electric Purple (#9D00FF)
+- **Dark backgrounds**: Pure black (#000000) optimized for TV displays
+- **Kinetic typography**: Bebas Neue for impact, Orbitron for futuristic feel
+- **Liquid animations**: Morphing blobs and psychedelic effects
+- **Glow effects**: Multi-layer neon shadows
+
+## Getting Started
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start Storybook
+pnpm storybook
+```
+
+## Packages
+
+| Package | Description |
+|---------|-------------|
+| `@shaken/ui` | React component library |
+| `@shaken/pixi` | Pixi.js graphics components |
+| `@shaken/game-logic` | Game state and rules |
+| `@shaken/hooks` | Shared React hooks |
+| `@shaken/types` | TypeScript definitions |
+
+## Color Palette
+
+<div style={{ display: 'flex', gap: '16px', marginTop: '16px' }}>
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <div style={{ width: '80px', height: '80px', background: '#CCFF00', borderRadius: '8px', boxShadow: '0 0 20px rgba(204, 255, 0, 0.6)' }} />
+    <span style={{ marginTop: '8px', color: '#CCFF00' }}>Acid Green</span>
+    <code>#CCFF00</code>
+  </div>
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <div style={{ width: '80px', height: '80px', background: '#FF10F0', borderRadius: '8px', boxShadow: '0 0 20px rgba(255, 16, 240, 0.6)' }} />
+    <span style={{ marginTop: '8px', color: '#FF10F0' }}>Hot Pink</span>
+    <code>#FF10F0</code>
+  </div>
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <div style={{ width: '80px', height: '80px', background: '#9D00FF', borderRadius: '8px', boxShadow: '0 0 20px rgba(157, 0, 255, 0.6)' }} />
+    <span style={{ marginTop: '8px', color: '#9D00FF' }}>Purple</span>
+    <code>#9D00FF</code>
+  </div>
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <div style={{ width: '80px', height: '80px', background: '#00FFFF', borderRadius: '8px', boxShadow: '0 0 20px rgba(0, 255, 255, 0.6)' }} />
+    <span style={{ marginTop: '8px', color: '#00FFFF' }}>Cyan</span>
+    <code>#00FFFF</code>
+  </div>
+</div>
+
+## Architecture
+
+```
+shaken-not-stirred/
+├── apps/
+│   ├── storybook/         # This Storybook instance
+│   ├── host-tv/           # TV/Host interface
+│   └── controller-phone/  # Phone controller
+└── packages/
+    ├── ui/                # Component library
+    ├── pixi-components/   # WebGL effects
+    ├── game-logic/        # State management
+    ├── hooks/             # React hooks
+    └── types/             # TypeScript types
+```

@@ -1,0 +1,15 @@
+
+> @shaken/game-logic@0.0.1 build /Users/fourcolors/Projects/1_active/shaken_not_stired/packages/game-logic
+> tsup src/index.ts --format esm --dts --clean
+
+CLI Building entry: src/index.ts
+CLI Using tsconfig: tsconfig.json
+CLI tsup v8.5.1
+CLI Target: es2022
+CLI Cleaning output folder
+ESM Build start
+ESM dist/index.js 5.47 KB
+ESM ⚡️ Build success in 13ms
+DTS Build start
+DTS ⚡️ Build success in 568ms
+DTS dist/index.d.ts 4.04 KB

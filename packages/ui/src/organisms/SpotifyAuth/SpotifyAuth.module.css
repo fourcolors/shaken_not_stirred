@@ -1,0 +1,131 @@
+.spotifyAuth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--space-8);
+  background: var(--color-bg-primary);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  max-width: 500px;
+  text-align: center;
+}
+
+/* Logo */
+.logoContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spotifyLogo {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface);
+  border-radius: 50%;
+  color: #1DB954;
+  transition: var(--transition-normal);
+}
+
+.logoIcon {
+  width: 64px;
+  height: 64px;
+}
+
+.success .spotifyLogo {
+  background: rgba(29, 185, 84, 0.2);
+  box-shadow: 0 0 40px rgba(29, 185, 84, 0.4);
+}
+
+.error .spotifyLogo {
+  color: var(--color-danger);
+  background: rgba(255, 77, 77, 0.1);
+}
+
+.pulseRing {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border: 2px solid #1DB954;
+  border-radius: 50%;
+  animation: pulse-ring 1.5s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Content */
+.title {
+  margin: 0;
+}
+
+.description {
+  line-height: 1.6;
+}
+
+/* Account Info */
+.accountInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(29, 185, 84, 0.3);
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Spinner */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-surface);
+  border-top-color: #1DB954;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Connecting State */
+.connecting .spotifyLogo {
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(29, 185, 84, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(29, 185, 84, 0.6);
+  }
+}

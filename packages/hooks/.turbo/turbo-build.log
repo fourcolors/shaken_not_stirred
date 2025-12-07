@@ -1,0 +1,16 @@
+
+> @shaken/hooks@0.0.1 build /Users/fourcolors/Projects/1_active/shaken_not_stired/packages/hooks
+> tsup
+
+CLI Building entry: src/index.ts
+CLI Using tsconfig: tsconfig.json
+CLI tsup v8.5.1
+CLI Using tsup config: /Users/fourcolors/Projects/1_active/shaken_not_stired/packages/hooks/tsup.config.ts
+CLI Target: es2022
+CLI Cleaning output folder
+ESM Build start
+ESM dist/index.js 9.46 KB
+ESM ⚡️ Build success in 5ms
+DTS Build start
+DTS ⚡️ Build success in 796ms
+DTS dist/index.d.ts 6.28 KB

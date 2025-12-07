@@ -1,0 +1,251 @@
+.intro {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-primary);
+  z-index: var(--z-overlay);
+  overflow: hidden;
+}
+
+/* Flash effect */
+.flash {
+  position: absolute;
+  inset: 0;
+  background: var(--color-primary);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.entering .flash {
+  animation: flash-in 0.5s ease-out forwards;
+}
+
+@keyframes flash-in {
+  0% { opacity: 0; }
+  50% { opacity: 0.3; }
+  100% { opacity: 0; }
+}
+
+/* Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  z-index: 1;
+}
+
+.label {
+  letter-spacing: 0.5em;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.entering .label,
+.showing .label {
+  animation: slide-up 0.5s ease-out 0.2s forwards;
+}
+
+.exiting .label {
+  animation: slide-out 0.3s ease-in forwards;
+}
+
+/* Number */
+.numberContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.number {
+  font-family: var(--font-kinetic);
+  font-size: clamp(120px, 30vw, 200px);
+  font-weight: var(--font-black);
+  color: var(--color-primary);
+  text-shadow: var(--text-glow-primary);
+  opacity: 0;
+  transform: scale(2);
+}
+
+.entering .number,
+.showing .number {
+  animation: number-in 0.6s var(--ease-bounce) 0.3s forwards;
+}
+
+.exiting .number {
+  animation: number-out 0.3s ease-in forwards;
+}
+
+@keyframes number-in {
+  0% {
+    opacity: 0;
+    transform: scale(2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes number-out {
+  to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+/* Ghost numbers for glitch effect */
+.numberGhost,
+.numberGhost2 {
+  position: absolute;
+  font-family: var(--font-kinetic);
+  font-size: clamp(120px, 30vw, 200px);
+  font-weight: var(--font-black);
+  opacity: 0;
+}
+
+.showing .numberGhost {
+  color: var(--color-secondary);
+  animation: ghost-glitch 0.1s ease-in-out infinite alternate;
+  opacity: 0.3;
+}
+
+.showing .numberGhost2 {
+  color: var(--color-accent);
+  animation: ghost-glitch2 0.1s ease-in-out infinite alternate-reverse;
+  opacity: 0.3;
+}
+
+@keyframes ghost-glitch {
+  from { transform: translate(-3px, 0); }
+  to { transform: translate(3px, 0); }
+}
+
+@keyframes ghost-glitch2 {
+  from { transform: translate(0, -2px); }
+  to { transform: translate(0, 2px); }
+}
+
+/* Total */
+.total {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.entering .total,
+.showing .total {
+  animation: slide-down 0.4s ease-out 0.5s forwards;
+}
+
+.exiting .total {
+  animation: slide-out 0.3s ease-in forwards;
+}
+
+/* Theme */
+.theme {
+  margin-top: var(--space-6);
+  opacity: 0;
+}
+
+.showing .theme {
+  animation: fade-in 0.5s ease-out 0.8s forwards;
+}
+
+.exiting .theme {
+  animation: slide-out 0.2s ease-in forwards;
+}
+
+/* Decorative lines */
+.lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.line {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  opacity: 0;
+}
+
+.line:nth-child(1) {
+  top: 30%;
+  left: -100%;
+  width: 100%;
+}
+
+.line:nth-child(2) {
+  top: 50%;
+  right: -100%;
+  width: 80%;
+}
+
+.line:nth-child(3) {
+  top: 70%;
+  left: -100%;
+  width: 60%;
+}
+
+.entering .line:nth-child(1) {
+  animation: line-sweep 0.5s ease-out 0.1s forwards;
+}
+
+.entering .line:nth-child(2) {
+  animation: line-sweep-reverse 0.5s ease-out 0.2s forwards;
+}
+
+.entering .line:nth-child(3) {
+  animation: line-sweep 0.5s ease-out 0.3s forwards;
+}
+
+@keyframes line-sweep {
+  from {
+    left: -100%;
+    opacity: 1;
+  }
+  to {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes line-sweep-reverse {
+  from {
+    right: -100%;
+    opacity: 1;
+  }
+  to {
+    right: 100%;
+    opacity: 0;
+  }
+}
+
+/* Common animations */
+@keyframes slide-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-out {
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes fade-in {
+  to { opacity: 1; }
+}

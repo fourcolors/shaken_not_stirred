@@ -1,0 +1,16 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { clsx } from 'clsx';
+import { Typography } from '../../atoms/Typography';
+import { Avatar } from '../../atoms/Avatar';
+import { Timer } from '../../molecules/Timer';
+import styles from './VotingVersus.module.css';
+/**
+ * Versus voting screen showing two answers side by side.
+ * Players vote on their phones, host sees the matchup.
+ */
+export function VotingVersus({ prompt, answerA, answerB, timeRemaining, totalTime, votesA = 0, votesB = 0, showVotes = false, winnerId, className, }) {
+    const isReveal = showVotes && winnerId;
+    return (_jsxs("div", { className: clsx(styles.versus, isReveal && styles.reveal, className), children: [_jsxs("header", { className: styles.header, children: [_jsx(Typography, { variant: "label", color: "muted", children: "The Prompt" }), _jsx(Typography, { variant: "h3", glow: true, children: prompt })] }), !isReveal && (_jsx("div", { className: styles.timer, children: _jsx(Timer, { duration: totalTime, timeRemaining: timeRemaining, variant: "bar", size: "sm" }) })), _jsxs("div", { className: styles.answers, children: [_jsxs("div", { className: clsx(styles.answerCard, styles.cardA, winnerId === answerA.playerId && styles.winner, winnerId && winnerId !== answerA.playerId && styles.loser), children: [_jsx("div", { className: styles.answerContent, children: _jsxs(Typography, { variant: "h2", className: styles.answerText, children: ["\"", answerA.answer, "\""] }) }), showVotes && (_jsxs("div", { className: styles.voteCount, children: [_jsx(Typography, { variant: "h1", color: "primary", glow: true, children: votesA }), _jsx(Typography, { variant: "caption", color: "muted", children: "votes" })] })), _jsxs("div", { className: styles.playerTag, children: [_jsx(Avatar, { shape: answerA.avatarShape, color: answerA.avatarColor, size: "sm" }), _jsx(Typography, { variant: "caption", color: "muted", children: isReveal ? answerA.playerName : '???' })] })] }), _jsx("div", { className: styles.vsBadge, children: _jsx(Typography, { variant: "h3", color: "secondary", glow: true, children: "VS" }) }), _jsxs("div", { className: clsx(styles.answerCard, styles.cardB, winnerId === answerB.playerId && styles.winner, winnerId && winnerId !== answerB.playerId && styles.loser), children: [_jsx("div", { className: styles.answerContent, children: _jsxs(Typography, { variant: "h2", className: styles.answerText, children: ["\"", answerB.answer, "\""] }) }), showVotes && (_jsxs("div", { className: styles.voteCount, children: [_jsx(Typography, { variant: "h1", color: "secondary", glow: true, children: votesB }), _jsx(Typography, { variant: "caption", color: "muted", children: "votes" })] })), _jsxs("div", { className: styles.playerTag, children: [_jsx(Avatar, { shape: answerB.avatarShape, color: answerB.avatarColor, size: "sm" }), _jsx(Typography, { variant: "caption", color: "muted", children: isReveal ? answerB.playerName : '???' })] })] })] }), isReveal && winnerId && (_jsx("div", { className: styles.winnerAnnouncement, children: _jsxs(Typography, { variant: "h4", color: "accent", glow: true, children: ["\uD83C\uDFC6 ", winnerId === answerA.playerId ? answerA.playerName : answerB.playerName, " wins!"] }) }))] }));
+}
+export default VotingVersus;
+//# sourceMappingURL=VotingVersus.js.map

@@ -1,0 +1,499 @@
+/**
+ * ACID LOUNGE DESIGN TOKENS
+ * Design System for "Shaken Not Stirred" - The Viva Lounge
+ *
+ * Usage: Import this file into your root CSS/SCSS
+ * @import './design-tokens.css';
+ */
+
+:root {
+  /* ========================================
+     COLOR SYSTEM
+     ======================================== */
+
+  /* === ACID GREEN === */
+  --color-acid-primary: #CCFF00;
+  --color-acid-bright: #E0FF66;
+  --color-acid-electric: #9DFF00;
+  --color-acid-dark: #99CC00;
+
+  /* === HOT PINK/MAGENTA === */
+  --color-pink-primary: #FF10F0;
+  --color-pink-bright: #FF66FF;
+  --color-pink-electric: #FF00FF;
+  --color-pink-deep: #CC0099;
+
+  /* === CYBER PURPLE === */
+  --color-purple-primary: #9D00FF;
+  --color-purple-glow: #CC66FF;
+  --color-purple-dark: #660099;
+
+  /* === BACKGROUNDS (Dark Theme) === */
+  --bg-void: #000000;
+  --bg-deep: #0A0A0F;
+  --bg-surface: #1A1A2E;
+  --bg-panel: #16213E;
+  --bg-overlay: rgba(10, 10, 15, 0.92);
+
+  /* === GRADIENT BACKGROUNDS === */
+  --bg-gradient-acid: linear-gradient(135deg, #9DFF00 0%, #CCFF00 100%);
+  --bg-gradient-pink: linear-gradient(135deg, #FF10F0 0%, #FF66FF 100%);
+  --bg-gradient-cosmic: linear-gradient(135deg, #0A0A0F 0%, #16213E 50%, #1A1A2E 100%);
+  --bg-gradient-neon: radial-gradient(circle at 50% 50%, #CCFF00 0%, #FF10F0 50%, #9D00FF 100%);
+
+  /* === SEMANTIC COLORS === */
+  --color-success: #00FF88;
+  --color-success-glow: #66FFAA;
+  --color-success-bg: rgba(0, 255, 136, 0.15);
+
+  --color-error: #FF3366;
+  --color-error-glow: #FF6699;
+  --color-error-bg: rgba(255, 51, 102, 0.15);
+
+  --color-warning: #FFAA00;
+  --color-warning-glow: #FFCC66;
+  --color-warning-bg: rgba(255, 170, 0, 0.15);
+
+  --color-info: #00CCFF;
+  --color-info-glow: #66DDFF;
+  --color-info-bg: rgba(0, 204, 255, 0.15);
+
+  /* === TEXT COLORS === */
+  --text-primary: #FFFFFF;
+  --text-secondary: #E5E5E5;
+  --text-tertiary: #999999;
+  --text-disabled: #555555;
+  --text-inverted: #000000;
+
+  --text-neon-acid: #CCFF00;
+  --text-neon-pink: #FF10F0;
+  --text-neon-purple: #9D00FF;
+
+  /* ========================================
+     TYPOGRAPHY
+     ======================================== */
+
+  /* === FONT FAMILIES === */
+  --font-display: 'Bebas Neue', 'Impact', 'Arial Black', sans-serif;
+  --font-kinetic: 'Orbitron', 'Exo 2', 'Michroma', monospace;
+  --font-body: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+
+  /* === FONT SIZES (Mobile First) === */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.25rem;      /* 20px */
+  --text-xl: 1.563rem;     /* 25px */
+  --text-2xl: 1.953rem;    /* 31px */
+  --text-3xl: 2.441rem;    /* 39px */
+  --text-4xl: 3.052rem;    /* 49px */
+  --text-5xl: 3.815rem;    /* 61px */
+  --text-6xl: 4.768rem;    /* 76px */
+  --text-7xl: 5.96rem;     /* 95px */
+
+  /* === TV OPTIMIZED SIZES === */
+  --text-tv-base: 1.25rem;    /* 20px */
+  --text-tv-lg: 1.75rem;      /* 28px */
+  --text-tv-xl: 2.5rem;       /* 40px */
+  --text-tv-2xl: 3.5rem;      /* 56px */
+  --text-tv-3xl: 5rem;        /* 80px */
+  --text-tv-hero: 7rem;       /* 112px */
+
+  /* === FONT WEIGHTS === */
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-black: 900;
+
+  /* === LINE HEIGHTS === */
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+
+  /* === LETTER SPACING === */
+  --tracking-tighter: -0.05em;
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+
+  /* ========================================
+     SPACING (8px Grid)
+     ======================================== */
+
+  --space-0: 0;
+  --space-1: 0.25rem;    /* 4px */
+  --space-2: 0.5rem;     /* 8px */
+  --space-3: 0.75rem;    /* 12px */
+  --space-4: 1rem;       /* 16px */
+  --space-5: 1.25rem;    /* 20px */
+  --space-6: 1.5rem;     /* 24px */
+  --space-8: 2rem;       /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-20: 5rem;      /* 80px */
+  --space-24: 6rem;      /* 96px */
+  --space-32: 8rem;      /* 128px */
+
+  /* ========================================
+     BORDER RADIUS
+     ======================================== */
+
+  --radius-none: 0;
+  --radius-sm: 0.25rem;      /* 4px */
+  --radius-base: 0.5rem;     /* 8px */
+  --radius-md: 0.75rem;      /* 12px */
+  --radius-lg: 1rem;         /* 16px */
+  --radius-xl: 1.5rem;       /* 24px */
+  --radius-2xl: 2rem;        /* 32px */
+  --radius-3xl: 3rem;        /* 48px */
+  --radius-full: 9999px;
+
+  /* === ORGANIC SHAPES === */
+  --radius-blob: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  --radius-liquid: 40% 60% 60% 40% / 60% 40% 60% 40%;
+
+  /* ========================================
+     SHADOWS & GLOWS
+     ======================================== */
+
+  /* === ELEVATION SHADOWS === */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  --shadow-2xl: 0 35px 60px -15px rgba(0, 0, 0, 0.6);
+
+  /* === INNER SHADOWS === */
+  --shadow-inner-sm: inset 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  --shadow-inner-md: inset 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+  --shadow-inner-lg: inset 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+
+  /* === ACID GREEN GLOW === */
+  --glow-acid-sm: 0 0 10px rgba(204, 255, 0, 0.5), 0 0 20px rgba(204, 255, 0, 0.3);
+  --glow-acid-md: 0 0 20px rgba(204, 255, 0, 0.6), 0 0 40px rgba(204, 255, 0, 0.4), 0 0 60px rgba(204, 255, 0, 0.2);
+  --glow-acid-lg: 0 0 30px rgba(204, 255, 0, 0.8), 0 0 60px rgba(204, 255, 0, 0.6), 0 0 90px rgba(204, 255, 0, 0.4);
+  --glow-acid-xl: 0 0 40px rgba(204, 255, 0, 1), 0 0 80px rgba(204, 255, 0, 0.8), 0 0 120px rgba(204, 255, 0, 0.6);
+
+  /* === PINK GLOW === */
+  --glow-pink-sm: 0 0 10px rgba(255, 16, 240, 0.5), 0 0 20px rgba(255, 16, 240, 0.3);
+  --glow-pink-md: 0 0 20px rgba(255, 16, 240, 0.6), 0 0 40px rgba(255, 16, 240, 0.4), 0 0 60px rgba(255, 16, 240, 0.2);
+  --glow-pink-lg: 0 0 30px rgba(255, 16, 240, 0.8), 0 0 60px rgba(255, 16, 240, 0.6), 0 0 90px rgba(255, 16, 240, 0.4);
+  --glow-pink-xl: 0 0 40px rgba(255, 16, 240, 1), 0 0 80px rgba(255, 16, 240, 0.8), 0 0 120px rgba(255, 16, 240, 0.6);
+
+  /* === PURPLE GLOW === */
+  --glow-purple-sm: 0 0 10px rgba(157, 0, 255, 0.5), 0 0 20px rgba(157, 0, 255, 0.3);
+  --glow-purple-md: 0 0 20px rgba(157, 0, 255, 0.6), 0 0 40px rgba(157, 0, 255, 0.4), 0 0 60px rgba(157, 0, 255, 0.2);
+  --glow-purple-lg: 0 0 30px rgba(157, 0, 255, 0.8), 0 0 60px rgba(157, 0, 255, 0.6), 0 0 90px rgba(157, 0, 255, 0.4);
+
+  /* === WHITE GLOW === */
+  --glow-white-sm: 0 0 10px rgba(255, 255, 255, 0.5);
+  --glow-white-md: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(255, 255, 255, 0.4);
+  --glow-white-lg: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.6);
+
+  /* ========================================
+     ANIMATION & MOTION
+     ======================================== */
+
+  /* === TIMING FUNCTIONS === */
+  --ease-linear: cubic-bezier(0, 0, 1, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-liquid: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-elastic: cubic-bezier(0.87, 0, 0.13, 1);
+  --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* === DURATION SCALE === */
+  --duration-instant: 50ms;
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-medium: 500ms;
+  --duration-slow: 800ms;
+  --duration-glacial: 1200ms;
+
+  /* ========================================
+     Z-INDEX SYSTEM
+     ======================================== */
+
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-popover: 600;
+  --z-toast: 700;
+  --z-debug: 9999;
+
+  /* ========================================
+     BREAKPOINTS
+     ======================================== */
+
+  --screen-xs: 320px;
+  --screen-sm: 640px;
+  --screen-md: 768px;
+  --screen-lg: 1024px;
+  --screen-xl: 1280px;
+  --screen-2xl: 1536px;
+  --screen-tv: 1920px;
+  --screen-4k: 3840px;
+
+  /* ========================================
+     COMPONENT TOKENS
+     ======================================== */
+
+  /* === BUTTONS === */
+  --btn-sm-height: 2rem;
+  --btn-md-height: 2.75rem;
+  --btn-lg-height: 3.5rem;
+  --btn-xl-height: 4rem;
+
+  --btn-sm-padding: 0.5rem 1rem;
+  --btn-md-padding: 0.75rem 1.5rem;
+  --btn-lg-padding: 1rem 2rem;
+  --btn-xl-padding: 1.25rem 3rem;
+
+  --btn-primary-bg: var(--color-acid-primary);
+  --btn-primary-text: var(--text-inverted);
+  --btn-primary-glow: var(--glow-acid-md);
+
+  --btn-secondary-bg: var(--color-pink-primary);
+  --btn-secondary-text: var(--text-primary);
+  --btn-secondary-glow: var(--glow-pink-md);
+
+  --btn-ghost-bg: transparent;
+  --btn-ghost-text: var(--text-primary);
+  --btn-ghost-border: 2px solid var(--color-acid-primary);
+
+  /* === AVATARS === */
+  --avatar-xs: 2rem;
+  --avatar-sm: 3rem;
+  --avatar-md: 4rem;
+  --avatar-lg: 6rem;
+  --avatar-xl: 8rem;
+  --avatar-2xl: 12rem;
+
+  /* === CARDS === */
+  --card-bg: var(--bg-panel);
+  --card-border: 1px solid rgba(255, 255, 255, 0.1);
+  --card-radius: var(--radius-xl);
+  --card-shadow: var(--shadow-lg);
+  --card-padding: var(--space-6);
+
+  /* === INPUTS === */
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --input-border: 2px solid rgba(255, 255, 255, 0.2);
+  --input-border-focus: 2px solid var(--color-acid-primary);
+  --input-height: 3rem;
+  --input-padding: 0.75rem 1rem;
+  --input-radius: var(--radius-lg);
+  --input-text: var(--text-primary);
+  --input-placeholder: var(--text-tertiary);
+
+  /* === FOCUS STATES === */
+  --focus-ring: 3px solid var(--color-acid-primary);
+  --focus-offset: 2px;
+  --focus-glow: var(--glow-acid-sm);
+}
+
+/* ========================================
+   KEYFRAME ANIMATIONS
+   ======================================== */
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+  20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-5px, 5px);
+  }
+  40% {
+    transform: translate(-5px, -5px);
+  }
+  60% {
+    transform: translate(5px, 5px);
+  }
+  80% {
+    transform: translate(5px, -5px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes liquid {
+  0%, 100% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+  25% {
+    border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+  }
+  50% {
+    border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+  }
+  75% {
+    border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-acid-primary: #FFFF00; /* Brighter for visibility */
+    --text-primary: #FFFFFF;
+    --bg-void: #000000;
+  }
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+.text-glow-acid {
+  text-shadow: var(--glow-acid-md);
+}
+
+.text-glow-pink {
+  text-shadow: var(--glow-pink-md);
+}
+
+.text-glow-purple {
+  text-shadow: var(--glow-purple-md);
+}
+
+.bg-void {
+  background-color: var(--bg-void);
+}
+
+.bg-deep {
+  background-color: var(--bg-deep);
+}
+
+.bg-gradient-acid {
+  background: var(--bg-gradient-acid);
+}
+
+.bg-gradient-pink {
+  background: var(--bg-gradient-pink);
+}
+
+.bg-gradient-cosmic {
+  background: var(--bg-gradient-cosmic);
+}
+
+.animate-pulse {
+  animation: pulse var(--duration-slow) var(--ease-smooth) infinite;
+}
+
+.animate-float {
+  animation: float var(--duration-glacial) var(--ease-smooth) infinite;
+}
+
+.animate-shake {
+  animation: shake var(--duration-medium) var(--ease-linear);
+}
+
+.animate-glitch {
+  animation: glitch var(--duration-base) var(--ease-linear) infinite;
+}
+
+.animate-liquid {
+  animation: liquid var(--duration-glacial) var(--ease-smooth) infinite;
+}

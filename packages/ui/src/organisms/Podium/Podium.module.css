@@ -1,0 +1,190 @@
+.podium {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: var(--space-6);
+  background: var(--color-bg-primary);
+  gap: var(--space-6);
+  overflow: hidden;
+}
+
+/* Confetti */
+.confetti {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.confettiPiece {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 20px;
+  animation: confetti-fall 4s linear infinite;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-20px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Header */
+.header {
+  text-align: center;
+  z-index: 1;
+}
+
+.title {
+  animation: title-bounce 0.5s var(--ease-bounce);
+}
+
+@keyframes title-bounce {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Podium Stands */
+.podiumStands {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: var(--space-4);
+  z-index: 1;
+}
+
+/* Stand */
+.stand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.5s var(--ease-bounce);
+}
+
+.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Player Container */
+.playerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4);
+}
+
+.avatar {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Crown */
+.crown {
+  font-size: 40px;
+  animation: crown-spin 1s var(--ease-bounce);
+}
+
+@keyframes crown-spin {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-180deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+/* Stand Base */
+.standBase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface);
+  border: var(--border-medium) solid var(--color-surface-hover);
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
+}
+
+.first .standBase {
+  width: 140px;
+  height: 160px;
+}
+
+.second .standBase {
+  width: 120px;
+  height: 120px;
+}
+
+.third .standBase {
+  width: 120px;
+  height: 80px;
+}
+
+.goldBase {
+  background: rgba(157, 0, 255, 0.2);
+  border-color: var(--color-accent);
+  box-shadow: var(--glow-accent);
+}
+
+/* Winner Glow */
+.first .avatar {
+  animation: winner-glow 2s ease-in-out infinite, float 3s ease-in-out infinite;
+}
+
+@keyframes winner-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(157, 0, 255, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 30px rgba(157, 0, 255, 0.8));
+  }
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  z-index: 1;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .first .standBase {
+    width: 100px;
+    height: 120px;
+  }
+
+  .second .standBase,
+  .third .standBase {
+    width: 80px;
+    height: 80px;
+  }
+
+  .third .standBase {
+    height: 60px;
+  }
+}

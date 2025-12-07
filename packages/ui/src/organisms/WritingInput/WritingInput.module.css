@@ -1,0 +1,121 @@
+.writingInput {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: var(--space-4);
+  background: var(--color-bg-primary);
+  gap: var(--space-4);
+}
+
+/* Panic Mode */
+.panic {
+  animation: panic-bg 0.5s ease-in-out infinite;
+}
+
+@keyframes panic-bg {
+  0%, 100% { background: var(--color-bg-primary); }
+  50% { background: rgba(255, 77, 77, 0.1); }
+}
+
+/* Timer */
+.timerSection {
+  display: flex;
+  justify-content: center;
+}
+
+/* Prompt */
+.promptSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.prompt {
+  line-height: 1.4;
+}
+
+/* Input */
+.inputSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.textarea {
+  flex: 1;
+  min-height: 120px;
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: var(--border-medium) solid var(--color-surface-hover);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  resize: none;
+  transition: var(--transition-fast);
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(204, 255, 0, 0.2);
+}
+
+.textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+.textareaPanic {
+  border-color: var(--color-danger);
+  animation: textarea-shake 0.1s ease-in-out infinite;
+}
+
+@keyframes textarea-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+.charCount {
+  text-align: right;
+}
+
+/* Submitted State */
+.submitted {
+  justify-content: center;
+  align-items: center;
+}
+
+.submittedContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.checkmark {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(157, 0, 255, 0.2);
+  border: 3px solid var(--color-accent);
+  border-radius: var(--radius-full);
+  font-size: 40px;
+  color: var(--color-accent);
+  animation: checkmark-pop 0.5s var(--ease-bounce);
+}
+
+@keyframes checkmark-pop {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}

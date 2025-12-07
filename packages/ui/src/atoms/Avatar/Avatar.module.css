@@ -1,0 +1,119 @@
+.avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  position: relative;
+}
+
+.shape {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  transition: transform var(--transition-base);
+}
+
+.animated .shape:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-weight: var(--font-bold);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: var(--tracking-wide);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.badges {
+  display: flex;
+  gap: var(--space-1);
+  position: absolute;
+  top: -8px;
+  right: -8px;
+}
+
+.badge {
+  font-size: 1em;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+/* Sizes */
+.sm {
+  width: 60px;
+}
+
+.sm .shape {
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+}
+
+.sm .name {
+  font-size: var(--text-xs);
+}
+
+.sm .badge {
+  font-size: 12px;
+}
+
+.md {
+  width: 80px;
+}
+
+.md .shape {
+  width: 56px;
+  height: 56px;
+  font-size: 32px;
+}
+
+.md .name {
+  font-size: var(--text-sm);
+}
+
+.md .badge {
+  font-size: 14px;
+}
+
+.lg {
+  width: 120px;
+}
+
+.lg .shape {
+  width: 80px;
+  height: 80px;
+  font-size: 48px;
+}
+
+.lg .name {
+  font-size: var(--text-base);
+}
+
+.lg .badge {
+  font-size: 18px;
+}
+
+.xl {
+  width: 160px;
+}
+
+.xl .shape {
+  width: 120px;
+  height: 120px;
+  font-size: 72px;
+}
+
+.xl .name {
+  font-size: var(--text-lg);
+}
+
+.xl .badge {
+  font-size: 24px;
+}
