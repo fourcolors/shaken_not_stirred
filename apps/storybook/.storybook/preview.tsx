@@ -2,7 +2,7 @@ import type { Preview } from '@storybook/react';
 import React from 'react';
 
 // Import design tokens
-import '@shaken/ui/styles';
+import '../../../packages/ui/src/styles/tokens.css';
 
 const preview: Preview = {
   parameters: {

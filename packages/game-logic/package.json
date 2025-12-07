@@ -16,6 +16,9 @@
     "dev": "tsup src/index.ts --format esm --dts --watch",
     "lint": "eslint src/",
     "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "clean": "rm -rf dist"
   },
   "dependencies": {
@@ -24,7 +27,9 @@
     "valtio": "^2.1.2"
   },
   "devDependencies": {
+    "@vitest/coverage-v8": "^2.1.8",
     "tsup": "^8.3.5",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
   }
 }

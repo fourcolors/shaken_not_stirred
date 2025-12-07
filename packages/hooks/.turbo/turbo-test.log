@@ -1,0 +1,14 @@
+
+> @shaken/hooks@0.0.1 test /Users/fourcolors/Projects/1_active/shaken_not_stired/packages/hooks
+> vitest run
+
+
+ RUN  v2.1.9 /Users/fourcolors/Projects/1_active/shaken_not_stired/packages/hooks
+
+ ✓ src/useShake.test.ts (11 tests) 15ms
+
+ Test Files  1 passed (1)
+      Tests  11 passed (11)
+   Start at  21:43:57
+   Duration  693ms (transform 29ms, setup 36ms, collect 64ms, tests 15ms, environment 190ms, prepare 52ms)
+

@@ -8,9 +8,9 @@ CLI tsup v8.5.1
 CLI Target: es2022
 CLI Cleaning output folder
 ESM Build start
-ESM dist/index.css 68.25 KB
 ESM dist/index.js  89.86 KB
-ESM ⚡️ Build success in 53ms
+ESM dist/index.css 68.25 KB
+ESM ⚡️ Build success in 71ms
 DTS Build start
-DTS ⚡️ Build success in 6712ms
+DTS ⚡️ Build success in 6967ms
 DTS dist/index.d.ts 26.26 KB

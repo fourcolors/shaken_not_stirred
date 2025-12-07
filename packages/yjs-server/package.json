@@ -1,0 +1,32 @@
+{
+  "name": "@shaken/yjs-server",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "description": "Yjs WebSocket server for Shaken Not Stirred multiplayer game",
+  "main": "./dist/server.js",
+  "types": "./dist/server.d.ts",
+  "bin": {
+    "yjs-server": "./dist/server.js"
+  },
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "node dist/server.js",
+    "build": "tsc",
+    "clean": "rm -rf dist node_modules"
+  },
+  "dependencies": {
+    "yjs": "^13.6.20",
+    "y-websocket": "^2.0.4",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "@types/ws": "^8.5.13",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

@@ -1,0 +1,21 @@
+<svg width="512" height="512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background -->
+  <rect width="512" height="512" fill="#0a0a0a"/>
+
+  <!-- Martini glass in acid green -->
+  <g fill="none" stroke="#CCFF00" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Glass -->
+    <path d="M 150 140 L 256 280 L 362 140" />
+    <line x1="256" y1="280" x2="256" y2="380" />
+    <line x1="200" y1="380" x2="312" y2="380" />
+
+    <!-- Olive -->
+    <circle cx="256" cy="220" r="18" fill="#CCFF00"/>
+
+    <!-- Motion lines (shake effect) -->
+    <path d="M 120 100 L 140 120" stroke="#FF10F0" stroke-width="8"/>
+    <path d="M 392 100 L 372 120" stroke="#FF10F0" stroke-width="8"/>
+    <path d="M 100 180 L 125 180" stroke="#FF10F0" stroke-width="8"/>
+    <path d="M 412 180 L 387 180" stroke="#FF10F0" stroke-width="8"/>
+  </g>
+</svg>

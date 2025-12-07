@@ -1,0 +1,17 @@
+
+> @shaken/game-logic@0.0.1 test /Users/fourcolors/Projects/1_active/shaken_not_stired/packages/game-logic
+> vitest run
+
+
+ RUN  v2.1.9 /Users/fourcolors/Projects/1_active/shaken_not_stired/packages/game-logic
+
+stderr | src/state/gameState.test.ts > gameState > startGame > should not start with less than 2 players
+Need at least 2 players to start
+
+ ✓ src/state/gameState.test.ts (15 tests) 6ms
+
+ Test Files  1 passed (1)
+      Tests  15 passed (15)
+   Start at  21:43:55
+   Duration  762ms (transform 35ms, setup 0ms, collect 63ms, tests 6ms, environment 0ms, prepare 86ms)
+

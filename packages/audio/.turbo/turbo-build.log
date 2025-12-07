@@ -1,0 +1,15 @@
+
+> @shaken/audio@0.0.1 build /Users/fourcolors/Projects/1_active/shaken_not_stired/packages/audio
+> tsup src/index.ts --format esm --dts --clean
+
+CLI Building entry: src/index.ts
+CLI Using tsconfig: tsconfig.json
+CLI tsup v8.5.1
+CLI Target: es2022
+CLI Cleaning output folder
+ESM Build start
+ESM dist/index.js 7.94 KB
+ESM ⚡️ Build success in 109ms
+DTS Build start
+DTS ⚡️ Build success in 337ms
+DTS dist/index.d.ts 3.33 KB
