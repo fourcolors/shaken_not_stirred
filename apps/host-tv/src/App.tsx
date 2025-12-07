@@ -7,7 +7,7 @@ import { gameState, initializeGame, startGame } from '@shaken/game-logic';
 const DEV_ROOM_CODE = 'TEST';
 
 // ngrok URL for external phone access (update when ngrok restarts)
-const NGROK_URL = 'https://82bbbc15dc84.ngrok-free.app';
+const NGROK_URL = 'https://0f23e263be95.ngrok-free.app';
 
 // Build controller URL for QR code
 const getControllerUrl = (roomCode: string) => {

@@ -1,5 +1,5 @@
 // State
-export { gameState, initializeGame, resetGame } from './state/gameState';
+export { gameState, initializeGame, resetGame, startGame, addPlayer, removePlayer, nextPhase } from './state/gameState';
 export type { GameState, Player, GamePhase, Round, AvatarShape } from './state/gameState';
 
 // Yjs Provider

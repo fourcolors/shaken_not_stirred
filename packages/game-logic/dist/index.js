@@ -59,6 +59,60 @@ function resetGame() {
   gameState.timerRemaining = 0;
   gameState.isTimerRunning = false;
 }
+function addPlayer(player) {
+  const newPlayer = {
+    ...player,
+    score: 0,
+    hasSubmitted: false,
+    isConnected: true
+  };
+  if (gameState.players.length === 0) {
+    newPlayer.isVIP = true;
+    gameState.vipPlayerId = newPlayer.id;
+  }
+  gameState.players.push(newPlayer);
+  return newPlayer;
+}
+function removePlayer(playerId) {
+  const index = gameState.players.findIndex((p) => p.id === playerId);
+  if (index !== -1) {
+    gameState.players.splice(index, 1);
+    if (gameState.vipPlayerId === playerId && gameState.players.length > 0) {
+      gameState.players[0].isVIP = true;
+      gameState.vipPlayerId = gameState.players[0].id;
+    }
+  }
+}
+function startGame() {
+  if (gameState.players.length < 2) {
+    console.warn("Need at least 2 players to start");
+    return;
+  }
+  gameState.phase = "intro";
+  gameState.currentRound = 1;
+}
+function nextPhase() {
+  const phaseOrder = [
+    "intro",
+    "writing",
+    "shaking",
+    "voting",
+    "reveal",
+    "summary"
+  ];
+  const currentIndex = phaseOrder.indexOf(gameState.phase);
+  if (currentIndex === -1) return;
+  if (currentIndex === phaseOrder.length - 1) {
+    if (gameState.currentRound >= gameState.totalRounds) {
+      gameState.phase = "podium";
+    } else {
+      gameState.currentRound++;
+      gameState.phase = "intro";
+    }
+  } else {
+    gameState.phase = phaseOrder[currentIndex + 1];
+  }
+}
 
 // src/state/yjsProvider.ts
 import * as Y from "yjs";
@@ -234,11 +288,15 @@ var GameRules = {
 };
 export {
   GameRules,
+  addPlayer,
   createYjsProvider,
   disconnectYjs,
   gameState,
   getSharedTypes,
   getYjsDoc,
   initializeGame,
-  resetGame
+  nextPhase,
+  removePlayer,
+  resetGame,
+  startGame
 };
