@@ -16,7 +16,44 @@ This project uses **Storybook Driven Development** to build a visually stunning 
 
 ## Getting Started
 
-*Coming soon - see `prd.md` for the full specification.*
+### Using Podman (Recommended)
+
+This project uses a Docker container for consistent development environments. We use [Podman](https://podman.io/) as the container runtime.
+
+**Build the container:**
+
+```bash
+podman build -t shaken-not-stirred .
+```
+
+**Run the container:**
+
+```bash
+podman run -p 3000:3000 shaken-not-stirred
+```
+
+**Development mode (with live reload):**
+
+```bash
+podman run -it -p 3000:3000 -v $(pwd):/app -v /app/node_modules shaken-not-stirred
+```
+
+> **Note:** The `-v /app/node_modules` creates an anonymous volume that preserves the container's node_modules, preventing conflicts with your host machine.
+
+**Other useful commands:**
+
+```bash
+# Run a shell inside the container
+podman run -it shaken-not-stirred /bin/sh
+
+# Stop all running containers
+podman stop --all
+
+# Remove the image (to rebuild fresh)
+podman rmi shaken-not-stirred
+```
+
+*See `prd.md` for the full specification.*
 
 ## License
 
