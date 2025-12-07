@@ -382,6 +382,7 @@ function Timer({
 
 // src/organisms/SplashScreen/SplashScreen.tsx
 import { clsx as clsx7 } from "clsx";
+import { QRCodeSVG } from "qrcode.react";
 
 // src/organisms/SplashScreen/SplashScreen.module.css
 var SplashScreen_default = {};
@@ -390,11 +391,13 @@ var SplashScreen_default = {};
 import { jsx as jsx7, jsxs as jsxs6 } from "react/jsx-runtime";
 function SplashScreen({
   roomCode,
+  joinUrl,
   showQR = true,
   subtitle = "A Party Game Experience",
   onStart,
   className
 }) {
+  console.log("SplashScreen render - joinUrl:", joinUrl, "roomCode:", roomCode);
   return /* @__PURE__ */ jsx7("div", { className: clsx7(SplashScreen_default.splash, className), children: /* @__PURE__ */ jsxs6("div", { className: SplashScreen_default.content, children: [
     /* @__PURE__ */ jsxs6("div", { className: SplashScreen_default.titleContainer, children: [
       /* @__PURE__ */ jsx7(Typography, { variant: "hero", glow: true, align: "center", className: SplashScreen_default.title, children: "SHAKEN" }),
@@ -414,8 +417,17 @@ function SplashScreen({
     ),
     /* @__PURE__ */ jsxs6("div", { className: SplashScreen_default.joinSection, children: [
       showQR && /* @__PURE__ */ jsxs6("div", { className: SplashScreen_default.qrContainer, children: [
-        /* @__PURE__ */ jsx7("div", { className: SplashScreen_default.qrPlaceholder, children: /* @__PURE__ */ jsx7("span", { children: "QR" }) }),
-        /* @__PURE__ */ jsx7(Typography, { variant: "label", color: "secondary", children: "Scan to Join" })
+        joinUrl ? /* @__PURE__ */ jsx7("div", { className: SplashScreen_default.qrCode, children: /* @__PURE__ */ jsx7(
+          QRCodeSVG,
+          {
+            value: joinUrl,
+            size: 160,
+            bgColor: "transparent",
+            fgColor: "#CCFF00",
+            level: "M"
+          }
+        ) }) : /* @__PURE__ */ jsx7("div", { className: SplashScreen_default.qrPlaceholder, children: /* @__PURE__ */ jsx7("span", { children: "QR" }) }),
+        /* @__PURE__ */ jsx7(Typography, { variant: "label", color: "secondary", children: "SCAN TO JOIN" })
       ] }),
       roomCode && /* @__PURE__ */ jsxs6("div", { className: SplashScreen_default.roomCodeSection, children: [
         /* @__PURE__ */ jsx7(Typography, { variant: "label", color: "muted", children: "Or Enter Code" }),
@@ -1981,6 +1993,7 @@ import { jsx as jsx25 } from "react/jsx-runtime";
 function GameFlow({
   phase,
   roomCode,
+  joinUrl,
   players,
   currentRound,
   totalRounds,
@@ -2044,9 +2057,11 @@ function GameFlow({
       rank: i + 1
     }));
   };
+  console.log("GameFlow render - phase:", phase, "roomCode:", roomCode, "joinUrl:", joinUrl);
   switch (phase) {
     case "idle":
-      return /* @__PURE__ */ jsx25(SplashScreen, { onStart: onStartGame });
+      console.log("GameFlow idle - passing to SplashScreen:", { roomCode, joinUrl });
+      return /* @__PURE__ */ jsx25(SplashScreen, { roomCode, joinUrl, onStart: onStartGame });
     case "lobby":
       return /* @__PURE__ */ jsx25(
         Lobby,

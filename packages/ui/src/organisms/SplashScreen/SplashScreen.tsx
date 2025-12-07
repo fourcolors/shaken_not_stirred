@@ -1,11 +1,14 @@
 import React from 'react';
 import { clsx } from 'clsx';
+import { QRCodeSVG } from 'qrcode.react';
 import { Typography } from '../../atoms/Typography';
 import styles from './SplashScreen.module.css';
 
 export interface SplashScreenProps {
   /** Room code to display (optional) */
   roomCode?: string;
+  /** URL to encode in QR code (for joining) */
+  joinUrl?: string;
   /** Whether to show the QR code placeholder */
   showQR?: boolean;
   /** Custom subtitle text */
@@ -33,11 +36,15 @@ export interface SplashScreenProps {
  */
 export function SplashScreen({
   roomCode,
+  joinUrl,
   showQR = true,
   subtitle = 'A Party Game Experience',
   onStart,
   className,
 }: SplashScreenProps) {
+  // Debug logging
+  console.log('SplashScreen render - joinUrl:', joinUrl, 'roomCode:', roomCode);
+
   return (
     <div className={clsx(styles.splash, className)}>
       <div className={styles.content}>
@@ -69,11 +76,23 @@ export function SplashScreen({
         <div className={styles.joinSection}>
           {showQR && (
             <div className={styles.qrContainer}>
-              <div className={styles.qrPlaceholder}>
-                <span>QR</span>
-              </div>
+              {joinUrl ? (
+                <div className={styles.qrCode}>
+                  <QRCodeSVG
+                    value={joinUrl}
+                    size={160}
+                    bgColor="transparent"
+                    fgColor="#CCFF00"
+                    level="M"
+                  />
+                </div>
+              ) : (
+                <div className={styles.qrPlaceholder}>
+                  <span>QR</span>
+                </div>
+              )}
               <Typography variant="label" color="secondary">
-                Scan to Join
+                SCAN TO JOIN
               </Typography>
             </div>
           )}

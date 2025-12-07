@@ -85,6 +85,35 @@
   gap: var(--space-3);
 }
 
+.qrCode {
+  width: 180px;
+  height: 180px;
+  background: var(--color-surface);
+  border: var(--border-medium) solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2);
+  box-shadow: var(--glow-primary);
+  animation: qr-glow 3s ease-in-out infinite;
+}
+
+.qrCode svg {
+  display: block;
+}
+
+@keyframes qr-glow {
+  0%, 100% {
+    box-shadow: var(--glow-primary);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--color-primary-glow),
+                0 0 40px var(--color-primary-glow),
+                0 0 60px var(--color-primary-glow);
+  }
+}
+
 .qrPlaceholder {
   width: 160px;
   height: 160px;

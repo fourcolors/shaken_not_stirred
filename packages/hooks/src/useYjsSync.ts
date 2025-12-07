@@ -30,6 +30,10 @@ export interface UseYjsSyncResult {
   disconnect: () => void;
   /** Reconnect to server */
   reconnect: () => void;
+  /** Add a player directly to Yjs (for clients) */
+  addPlayer: (player: Player) => void;
+  /** Remove a player directly from Yjs */
+  removePlayer: (playerId: string) => void;
 }
 
 /**
@@ -70,11 +74,22 @@ export function useYjsSync(options: UseYjsSyncOptions): UseYjsSyncResult {
     });
   }, [isHost]);
 
-  // Sync FROM Yjs to local state (clients)
-  const syncFromYjs = useCallback(() => {
+  // Sync players FROM Yjs to local state (both host and clients need this)
+  const syncPlayersFromYjs = useCallback(() => {
+    const { players: yPlayers } = getSharedTypes();
+    const players = yPlayers.toArray() as Player[];
+    // Only update if different to avoid loops
+    if (JSON.stringify(gameState.players) !== JSON.stringify(players)) {
+      console.log('[Yjs] Syncing players from Yjs:', players.length);
+      gameState.players = players;
+    }
+  }, []);
+
+  // Sync game state FROM Yjs to local state (clients only)
+  const syncGameStateFromYjs = useCallback(() => {
     if (isHost) return;
 
-    const { gameState: yGameState, players: yPlayers } = getSharedTypes();
+    const { gameState: yGameState } = getSharedTypes();
 
     // Read game state
     const phase = yGameState.get('phase') as GamePhase | undefined;
@@ -86,11 +101,31 @@ export function useYjsSync(options: UseYjsSyncOptions): UseYjsSyncResult {
     if (currentRound !== undefined) gameState.currentRound = currentRound;
     if (totalRounds !== undefined) gameState.totalRounds = totalRounds;
     if (timerRemaining !== undefined) gameState.timerRemaining = timerRemaining;
-
-    // Read players
-    const players = yPlayers.toArray() as Player[];
-    gameState.players = players;
   }, [isHost]);
+
+  // Combined sync from Yjs (for clients)
+  const syncFromYjs = useCallback(() => {
+    syncGameStateFromYjs();
+    syncPlayersFromYjs();
+  }, [syncGameStateFromYjs, syncPlayersFromYjs]);
+
+  // Add player directly to Yjs (for clients to join)
+  const addPlayer = useCallback((player: Player) => {
+    const { players: yPlayers } = getSharedTypes();
+    console.log('[Yjs] Adding player to Yjs:', player.name);
+    yPlayers.push([player]);
+  }, []);
+
+  // Remove player from Yjs
+  const removePlayer = useCallback((playerId: string) => {
+    const { players: yPlayers } = getSharedTypes();
+    const players = yPlayers.toArray() as Player[];
+    const index = players.findIndex(p => p.id === playerId);
+    if (index !== -1) {
+      console.log('[Yjs] Removing player from Yjs:', playerId);
+      yPlayers.delete(index);
+    }
+  }, []);
 
   // Connect to Yjs
   const connect = useCallback(() => {
@@ -114,16 +149,19 @@ export function useYjsSync(options: UseYjsSyncOptions): UseYjsSyncResult {
         }
       });
 
-      // Subscribe to Yjs changes (for clients)
+      // Subscribe to Yjs changes
+      const { gameState: yGameState, players: yPlayers } = getSharedTypes();
+
+      // Both host and clients observe player changes (for joining players)
+      yPlayers.observe(() => {
+        console.log('[Yjs] Players changed in Yjs');
+        syncPlayersFromYjs();
+      });
+
+      // Only clients observe game state changes
       if (!isHost) {
-        const { gameState: yGameState, players: yPlayers } = getSharedTypes();
-
         yGameState.observe(() => {
-          syncFromYjs();
-        });
-
-        yPlayers.observe(() => {
-          syncFromYjs();
+          syncGameStateFromYjs();
         });
       }
 
@@ -131,7 +169,7 @@ export function useYjsSync(options: UseYjsSyncOptions): UseYjsSyncResult {
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Failed to connect'));
     }
-  }, [serverUrl, roomCode, isHost, syncFromYjs]);
+  }, [serverUrl, roomCode, isHost, syncFromYjs, syncPlayersFromYjs, syncGameStateFromYjs]);
 
   // Disconnect from Yjs
   const disconnect = useCallback(() => {
@@ -165,6 +203,8 @@ export function useYjsSync(options: UseYjsSyncOptions): UseYjsSyncResult {
     error,
     disconnect,
     reconnect,
+    addPlayer,
+    removePlayer,
   };
 }
 

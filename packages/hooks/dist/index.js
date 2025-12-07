@@ -237,9 +237,17 @@ function useYjsSync(options) {
       });
     });
   }, [isHost]);
-  const syncFromYjs = useCallback3(() => {
+  const syncPlayersFromYjs = useCallback3(() => {
+    const { players: yPlayers } = getSharedTypes();
+    const players = yPlayers.toArray();
+    if (JSON.stringify(gameState2.players) !== JSON.stringify(players)) {
+      console.log("[Yjs] Syncing players from Yjs:", players.length);
+      gameState2.players = players;
+    }
+  }, []);
+  const syncGameStateFromYjs = useCallback3(() => {
     if (isHost) return;
-    const { gameState: yGameState, players: yPlayers } = getSharedTypes();
+    const { gameState: yGameState } = getSharedTypes();
     const phase = yGameState.get("phase");
     const currentRound = yGameState.get("currentRound");
     const totalRounds = yGameState.get("totalRounds");
@@ -248,9 +256,25 @@ function useYjsSync(options) {
     if (currentRound !== void 0) gameState2.currentRound = currentRound;
     if (totalRounds !== void 0) gameState2.totalRounds = totalRounds;
     if (timerRemaining !== void 0) gameState2.timerRemaining = timerRemaining;
-    const players = yPlayers.toArray();
-    gameState2.players = players;
   }, [isHost]);
+  const syncFromYjs = useCallback3(() => {
+    syncGameStateFromYjs();
+    syncPlayersFromYjs();
+  }, [syncGameStateFromYjs, syncPlayersFromYjs]);
+  const addPlayer = useCallback3((player) => {
+    const { players: yPlayers } = getSharedTypes();
+    console.log("[Yjs] Adding player to Yjs:", player.name);
+    yPlayers.push([player]);
+  }, []);
+  const removePlayer = useCallback3((playerId) => {
+    const { players: yPlayers } = getSharedTypes();
+    const players = yPlayers.toArray();
+    const index = players.findIndex((p) => p.id === playerId);
+    if (index !== -1) {
+      console.log("[Yjs] Removing player from Yjs:", playerId);
+      yPlayers.delete(index);
+    }
+  }, []);
   const connect = useCallback3(() => {
     try {
       const provider = createYjsProvider({
@@ -269,20 +293,21 @@ function useYjsSync(options) {
           syncFromYjs();
         }
       });
+      const { gameState: yGameState, players: yPlayers } = getSharedTypes();
+      yPlayers.observe(() => {
+        console.log("[Yjs] Players changed in Yjs");
+        syncPlayersFromYjs();
+      });
       if (!isHost) {
-        const { gameState: yGameState, players: yPlayers } = getSharedTypes();
         yGameState.observe(() => {
-          syncFromYjs();
-        });
-        yPlayers.observe(() => {
-          syncFromYjs();
+          syncGameStateFromYjs();
         });
       }
       setError(null);
     } catch (err) {
       setError(err instanceof Error ? err : new Error("Failed to connect"));
     }
-  }, [serverUrl, roomCode, isHost, syncFromYjs]);
+  }, [serverUrl, roomCode, isHost, syncFromYjs, syncPlayersFromYjs, syncGameStateFromYjs]);
   const disconnect = useCallback3(() => {
     disconnectYjs();
     setIsConnected(false);
@@ -306,7 +331,9 @@ function useYjsSync(options) {
     isSynced,
     error,
     disconnect,
-    reconnect
+    reconnect,
+    addPlayer,
+    removePlayer
   };
 }
 export {

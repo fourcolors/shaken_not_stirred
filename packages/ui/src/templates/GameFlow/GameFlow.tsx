@@ -41,6 +41,8 @@ export interface GameFlowProps {
   phase: GamePhase;
   /** Room code */
   roomCode?: string;
+  /** URL for QR code to join game */
+  joinUrl?: string;
   /** All players */
   players: GameFlowPlayer[];
   /** Current round number (1-indexed) */
@@ -70,6 +72,7 @@ export interface GameFlowProps {
 export function GameFlow({
   phase,
   roomCode,
+  joinUrl,
   players,
   currentRound,
   totalRounds,
@@ -147,10 +150,14 @@ export function GameFlow({
       }));
   };
 
+  // Debug logging
+  console.log('GameFlow render - phase:', phase, 'roomCode:', roomCode, 'joinUrl:', joinUrl);
+
   // Render based on phase
   switch (phase) {
     case 'idle':
-      return <SplashScreen onStart={onStartGame} />;
+      console.log('GameFlow idle - passing to SplashScreen:', { roomCode, joinUrl });
+      return <SplashScreen roomCode={roomCode} joinUrl={joinUrl} onStart={onStartGame} />;
 
     case 'lobby':
       return (
